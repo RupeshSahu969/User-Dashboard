@@ -11,7 +11,6 @@ const Dashboard = () => {
     user.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  // Handle form submission success → hide form
   const handleFormSubmit = () => {
     setShowForm(false);
   };
@@ -19,8 +18,6 @@ const Dashboard = () => {
   return (
     <div className="container mx-auto p-4 mt-10">
       <h1 className="text-2xl font-bold mb-4">User Dashboard</h1>
-
-      {/* Search + Add Button Row */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-2">
         <input
           type="text"
@@ -28,18 +25,16 @@ const Dashboard = () => {
           className="w-full md:w-1/3 p-2 border rounded"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          disabled={showForm} // disable search when form is open
+          disabled={showForm}
         />
 
         <button
           onClick={() => setShowForm(!showForm)}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-white"
         >
           {showForm ? "Cancel" : "Add User"}
         </button>
       </div>
-
-      {/* Show Users or Form */}
       {!showForm ? (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filteredUsers.map(user => (
@@ -48,8 +43,6 @@ const Dashboard = () => {
         </div>
       ) : (
         <div className="p-4 border rounded bg-white shadow">
-          
-          {/* Pass callback to close form after submit */}
           <UserForm onSubmitSuccess={handleFormSubmit} />
         </div>
       )}

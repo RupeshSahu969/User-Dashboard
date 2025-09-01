@@ -12,7 +12,7 @@ function App() {
       <DashboardLayout>
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/create" element={<UserForm />} /> {/* ✅ */}
+          <Route path="/create" element={<UserForm />} />
           <Route path="/user/:id" element={<UserDetails />} />
         </Routes>
       </DashboardLayout>
